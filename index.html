@@ -4,77 +4,251 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Politique de confidentialité — CoinCache</title>
+<meta name="description" content="CoinCache ne collecte aucune donnée. Tout reste sur votre téléphone.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #F7EBDD;
-    --card: #FFFFFF;
+    --bg-top: #F7EBDD;
+    --bg-bottom: #F2F0EE;
+    --surface: #FFFFFF;
+    --surface-alt: #F4F4F4;
+    --border: #E6E0D8;
     --text: #111111;
-    --muted: #555555;
-    --accent: #E8C400;
+    --text-soft: #555555;
+    --grey: #8A8A8A;
+    --yellow: #FFDE21;
+    --yellow-dark: #E8C400;
+    --yellow-pale: #FDF6D8;
     --green: #2E6B3E;
     --green-bg: #E8F6EC;
+    --green-card: #A9D3A0;
+    --radius: 22px;
   }
-  * { box-sizing: border-box; }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-top: #1E1A16;
+      --bg-bottom: #161310;
+      --surface: #28231F;
+      --surface-alt: #332D28;
+      --border: #443C35;
+      --text: #F2EFEA;
+      --text-soft: #C9C2B8;
+      --grey: #9A948C;
+      --yellow: #F2CF1D;
+      --yellow-dark: #D9BA00;
+      --yellow-pale: #332B18;
+      --green: #A9D3A0;
+      --green-bg: #1F3324;
+      --green-card: #3D5C3A;
+    }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
   body {
-    margin: 0;
-    padding: 32px 16px 64px;
-    background: var(--bg);
+    background: linear-gradient(160deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+    background-attachment: fixed;
     color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    line-height: 1.65;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.7;
+    padding: 40px 20px 80px;
+    -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 760px; margin: 0 auto; }
-  header { text-align: center; margin-bottom: 28px; }
-  h1 { font-size: 30px; margin: 0 0 6px; }
-  .sub { color: var(--muted); font-size: 14px; margin: 0; }
-  .card {
-    background: var(--card);
-    border-radius: 18px;
-    padding: 28px;
-    margin-bottom: 18px;
+
+  .wrap { max-width: 780px; margin: 0 auto; }
+
+  /* ---------- En-tête ---------- */
+  header { text-align: center; margin-bottom: 34px; }
+
+  .logo-mark {
+    width: 76px; height: 76px;
+    margin: 0 auto 18px;
+    border-radius: 24px;
+    background: var(--yellow);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 38px;
+    box-shadow: 0 8px 24px rgba(232, 196, 0, 0.28);
   }
-  h2 { font-size: 19px; margin: 0 0 12px; }
-  h2:not(:first-child) { margin-top: 28px; }
-  p { margin: 0 0 14px; }
-  ul { margin: 0 0 14px; padding-left: 20px; }
-  li { margin-bottom: 7px; }
-  .highlight {
-    background: var(--green-bg);
-    color: var(--green);
-    border-radius: 12px;
-    padding: 18px 20px;
-    font-weight: 600;
-    margin-bottom: 24px;
+
+  h1 {
+    font-family: 'Antonio', sans-serif;
+    font-size: clamp(38px, 8vw, 54px);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.05;
   }
-  .lang-switch { text-align: center; margin-bottom: 24px; }
+
+  .tagline {
+    color: var(--grey);
+    font-size: 14px;
+    margin-top: 6px;
+  }
+
+  /* ---------- Sélecteur de langue ---------- */
+  .lang-switch {
+    display: flex; justify-content: center; gap: 6px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 5px;
+    width: fit-content;
+    margin: 26px auto 34px;
+  }
   .lang-switch button {
-    background: var(--card);
-    border: 2px solid transparent;
-    border-radius: 20px;
-    padding: 8px 20px;
-    margin: 0 4px;
+    border: none;
+    background: transparent;
+    border-radius: 999px;
+    padding: 9px 22px;
+    font-family: inherit;
     font-size: 14px;
     font-weight: 600;
-    color: var(--text);
+    color: var(--text-soft);
     cursor: pointer;
+    transition: background .18s ease, color .18s ease;
   }
-  .lang-switch button.active { border-color: var(--accent); }
+  .lang-switch button:hover { color: var(--text); }
+  .lang-switch button.active {
+    background: var(--yellow);
+    color: #111111;
+  }
+
+  /* ---------- Bandeau clé ---------- */
+  .hero {
+    background: var(--green-bg);
+    border-radius: var(--radius);
+    padding: 26px 28px;
+    margin-bottom: 22px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+  .hero-icon {
+    flex-shrink: 0;
+    width: 46px; height: 46px;
+    border-radius: 14px;
+    background: var(--green-card);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+  }
+  .hero-text {
+    color: var(--green);
+    font-size: 15.5px;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+
+  /* ---------- Grille de points clés ---------- */
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin-bottom: 26px;
+  }
+  .fact {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+  .fact-emoji { font-size: 24px; display: block; margin-bottom: 8px; }
+  .fact-label { font-size: 12.5px; font-weight: 600; color: var(--text); }
+  .fact-sub { font-size: 11px; color: var(--grey); margin-top: 2px; }
+
+  /* ---------- Sections ---------- */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 8px 28px 28px;
+  }
+
+  section.block { padding-top: 26px; }
+  section.block + section.block {
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+
+  h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .num {
+    flex-shrink: 0;
+    width: 28px; height: 28px;
+    border-radius: 9px;
+    background: var(--yellow-pale);
+    color: var(--yellow-dark);
+    font-size: 13px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  p { color: var(--text-soft); font-size: 15px; margin-bottom: 12px; }
+  p:last-child { margin-bottom: 0; }
+
+  ul { list-style: none; margin: 4px 0 12px; }
+  li {
+    color: var(--text-soft);
+    font-size: 15px;
+    padding-left: 26px;
+    position: relative;
+    margin-bottom: 8px;
+  }
+  li::before {
+    content: '';
+    position: absolute;
+    left: 8px; top: 11px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--yellow-dark);
+  }
+  li strong { color: var(--text); font-weight: 600; }
+
+  .note {
+    background: var(--surface-alt);
+    border-radius: 14px;
+    padding: 16px 18px;
+    font-size: 14px;
+    color: var(--text-soft);
+    margin-top: 14px;
+  }
+
+  a { color: var(--yellow-dark); font-weight: 600; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
   footer {
     text-align: center;
-    color: var(--muted);
+    color: var(--grey);
     font-size: 13px;
-    margin-top: 24px;
+    margin-top: 34px;
+    line-height: 1.9;
   }
-  a { color: #4A7BD0; }
+  .footer-name { font-family: 'Antonio', sans-serif; font-size: 20px; color: var(--text); }
+
   [hidden] { display: none !important; }
+
+  @media (max-width: 560px) {
+    body { padding: 28px 14px 60px; }
+    .card { padding: 4px 20px 22px; }
+    .hero { padding: 20px; flex-direction: column; gap: 14px; }
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
 
   <header>
+    <div class="logo-mark">🐷</div>
     <h1>CoinCache</h1>
-    <p class="sub" id="sub">Politique de confidentialité — dernière mise à jour : août 2026</p>
+    <p class="tagline" id="tagline">Politique de confidentialité · Mise à jour : août 2026</p>
   </header>
 
   <div class="lang-switch">
@@ -82,187 +256,321 @@
     <button id="btn-en" onclick="setLang('en')">English</button>
   </div>
 
-  <!-- ============ FRANÇAIS ============ -->
-  <section id="fr">
-    <div class="highlight">
-      CoinCache ne collecte, ne transmet et ne stocke aucune donnée personnelle sur un serveur.
-      Toutes vos informations restent exclusivement sur votre appareil.
+  <!-- ══════════════ FRANÇAIS ══════════════ -->
+  <div id="fr">
+
+    <div class="hero">
+      <div class="hero-icon">🔒</div>
+      <p class="hero-text">
+        CoinCache ne collecte, ne transmet et ne stocke aucune donnée personnelle
+        sur un serveur. Tout reste sur votre téléphone, sans exception.
+      </p>
+    </div>
+
+    <div class="facts">
+      <div class="fact">
+        <span class="fact-emoji">🚫</span>
+        <div class="fact-label">Aucun compte</div>
+        <div class="fact-sub">Pas d'inscription</div>
+      </div>
+      <div class="fact">
+        <span class="fact-emoji">📡</span>
+        <div class="fact-label">Aucun serveur</div>
+        <div class="fact-sub">Aucune connexion</div>
+      </div>
+      <div class="fact">
+        <span class="fact-emoji">📊</span>
+        <div class="fact-label">Aucun traceur</div>
+        <div class="fact-sub">Ni pub, ni analytics</div>
+      </div>
+      <div class="fact">
+        <span class="fact-emoji">📱</span>
+        <div class="fact-label">100 % local</div>
+        <div class="fact-sub">Sur votre appareil</div>
+      </div>
     </div>
 
     <div class="card">
-      <h2>1. Aucune collecte de données</h2>
-      <p>
-        CoinCache est une application de gestion de budget entièrement locale. Elle ne dispose
-        d'aucun serveur, ne crée aucun compte en ligne et n'établit aucune connexion réseau
-        pour transmettre vos informations.
-      </p>
-      <p>Nous ne collectons, ne consultons et ne partageons aucune des données suivantes :</p>
-      <ul>
-        <li>Vos transactions, montants, catégories et libellés</li>
-        <li>Votre solde, vos objectifs d'épargne et vos budgets</li>
-        <li>Votre prénom, votre mot de passe et votre photo de profil</li>
-        <li>Vos préférences (devise, langue, thème)</li>
-        <li>Tout identifiant publicitaire ou de suivi</li>
-      </ul>
 
-      <h2>2. Où sont stockées vos données</h2>
-      <p>
-        L'ensemble de vos données est enregistré dans l'espace de stockage privé de
-        l'application, sur votre appareil uniquement. Cet espace est protégé par le système
-        Android et n'est accessible à aucune autre application.
-      </p>
-      <p>
-        La désinstallation de CoinCache, ou l'effacement de ses données depuis les réglages
-        Android, supprime définitivement l'intégralité de ces informations.
-      </p>
+      <section class="block">
+        <h2><span class="num">1</span> Aucune collecte de données</h2>
+        <p>
+          CoinCache est une application de gestion de budget entièrement locale.
+          Elle ne dispose d'aucun serveur, ne crée aucun compte en ligne et
+          n'établit aucune connexion réseau pour transmettre vos informations.
+        </p>
+        <p>Nous ne collectons, ne consultons et ne partageons aucune des données suivantes :</p>
+        <ul>
+          <li>Vos transactions, montants, catégories et libellés</li>
+          <li>Votre solde, vos objectifs d'épargne et vos budgets</li>
+          <li>Votre prénom, votre code de verrouillage et votre photo de profil</li>
+          <li>Vos préférences : devise, langue, thème</li>
+          <li>Tout identifiant publicitaire ou de suivi</li>
+        </ul>
+      </section>
 
-      <h2>3. Sécurité</h2>
-      <p>
-        Le mot de passe que vous définissez sert uniquement à protéger l'accès à l'application
-        sur votre appareil. Il n'est jamais transmis et n'est pas conservé en clair : seule
-        une empreinte cryptographique (SHA-256 avec sel) est enregistrée localement.
-      </p>
-      <p>
-        Si vous activez la connexion par empreinte digitale, l'authentification est gérée par
-        le système Android. CoinCache ne reçoit ni ne conserve aucune donnée biométrique.
-      </p>
+      <section class="block">
+        <h2><span class="num">2</span> Informations facultatives</h2>
+        <p>
+          L'application peut être utilisée sans fournir la moindre information
+          personnelle. Le prénom et le code de verrouillage sont proposés lors de
+          la configuration initiale, mais restent entièrement facultatifs.
+        </p>
+        <p>
+          Ces éléments, lorsqu'ils sont renseignés, ne servent qu'au fonctionnement
+          local de l'application : personnaliser l'affichage et protéger l'accès sur
+          l'appareil. Ils peuvent être modifiés ou supprimés à tout moment depuis les
+          paramètres.
+        </p>
+      </section>
 
-      <h2>4. Permissions demandées</h2>
-      <ul>
-        <li><strong>Notifications</strong> — pour vous envoyer un rappel quotidien et vous
-        alerter en cas de dépassement de budget. Ces notifications sont générées localement
-        par votre appareil.</li>
-        <li><strong>Biométrie</strong> — pour permettre le déverrouillage par empreinte digitale.</li>
-        <li><strong>Accès aux images</strong> — uniquement lorsque vous choisissez une photo
-        de profil. L'image sélectionnée est copiée dans l'espace privé de l'application.</li>
-        <li><strong>Accès aux fichiers</strong> — uniquement lorsque vous enregistrez une
-        sauvegarde ou un export, dans le dossier que vous désignez.</li>
-      </ul>
+      <section class="block">
+        <h2><span class="num">3</span> Où sont stockées vos données</h2>
+        <p>
+          L'ensemble de vos données est enregistré dans l'espace de stockage privé
+          de l'application, sur votre appareil uniquement. Cet espace est protégé
+          par le système Android et n'est accessible à aucune autre application.
+        </p>
+        <div class="note">
+          La désinstallation de CoinCache, ou l'effacement de ses données depuis
+          les réglages Android, supprime définitivement l'intégralité de ces
+          informations. Pensez à réaliser une sauvegarde avant de changer d'appareil.
+        </div>
+      </section>
 
-      <h2>5. Sauvegardes et exports</h2>
-      <p>
-        CoinCache vous permet d'exporter vos données au format JSON ou CSV. Ces fichiers sont
-        créés à votre demande et enregistrés à l'emplacement de votre choix sur votre appareil.
-        Ils vous appartiennent entièrement ; leur conservation et leur éventuel partage
-        relèvent de votre seule responsabilité.
-      </p>
+      <section class="block">
+        <h2><span class="num">4</span> Sécurité</h2>
+        <p>
+          Le code de verrouillage que vous pouvez définir sert uniquement à protéger
+          l'accès à l'application sur votre appareil. Il n'est jamais transmis et
+          n'est pas conservé en clair : seule une empreinte cryptographique
+          (SHA-256 avec sel) est enregistrée localement.
+        </p>
+        <p>
+          Le déverrouillage par empreinte digitale est désactivé par défaut. Si vous
+          choisissez de l'activer, l'authentification est gérée par le système
+          Android : CoinCache ne reçoit ni ne conserve aucune donnée biométrique.
+        </p>
+      </section>
 
-      <h2>6. Services tiers</h2>
-      <p>
-        CoinCache n'intègre aucun service d'analyse, aucune publicité et aucun outil de suivi.
-        Aucune bibliothèque tierce présente dans l'application ne transmet de données vers
-        l'extérieur.
-      </p>
+      <section class="block">
+        <h2><span class="num">5</span> Permissions demandées</h2>
+        <p>
+          Chaque permission est demandée au moment précis où elle devient utile,
+          jamais au démarrage de l'application.
+        </p>
+        <ul>
+          <li><strong>Notifications</strong> — demandée lorsque vous activez le rappel quotidien ou créez une alerte de budget. Ces notifications sont générées localement par votre appareil.</li>
+          <li><strong>Biométrie</strong> — demandée uniquement si vous activez le déverrouillage par empreinte.</li>
+          <li><strong>Photos</strong> — la sélection d'une photo de profil passe par le sélecteur système Android. L'application n'accède jamais au reste de votre galerie.</li>
+          <li><strong>Fichiers</strong> — uniquement lorsque vous enregistrez une sauvegarde ou un export, dans le dossier que vous désignez vous-même.</li>
+        </ul>
+      </section>
 
-      <h2>7. Enfants</h2>
-      <p>
-        CoinCache ne s'adresse pas spécifiquement aux enfants et ne collecte aucune donnée,
-        quel que soit l'âge de l'utilisateur.
-      </p>
+      <section class="block">
+        <h2><span class="num">6</span> Sauvegardes et exports</h2>
+        <p>
+          CoinCache vous permet d'exporter vos données au format JSON ou CSV. Ces
+          fichiers sont créés à votre demande et enregistrés à l'emplacement de
+          votre choix sur votre appareil. Ils vous appartiennent entièrement ; leur
+          conservation et leur éventuel partage relèvent de votre seule responsabilité.
+        </p>
+      </section>
 
-      <h2>8. Modifications</h2>
-      <p>
-        Cette politique pourra être mise à jour si l'application évolue. Toute modification
-        sera publiée sur cette page, avec une date de mise à jour actualisée.
-      </p>
+      <section class="block">
+        <h2><span class="num">7</span> Services tiers</h2>
+        <p>
+          CoinCache n'intègre aucun service d'analyse, aucune publicité et aucun
+          outil de suivi. Aucune bibliothèque tierce présente dans l'application ne
+          transmet de données vers l'extérieur.
+        </p>
+      </section>
 
-      <h2>9. Contact</h2>
-      <p>
-        Pour toute question relative à cette politique de confidentialité :
-        <a href="mailto:ayoubmhb13@gmail.com">ayoubmhb13@gmail.com</a>
+      <section class="block">
+        <h2><span class="num">8</span> Enfants</h2>
+        <p>
+          CoinCache s'adresse aux personnes majeures et ne collecte aucune donnée,
+          quel que soit l'âge de l'utilisateur.
+        </p>
+      </section>
+
+      <section class="block">
+        <h2><span class="num">9</span> Modifications</h2>
+        <p>
+          Cette politique pourra être mise à jour si l'application évolue. Toute
+          modification sera publiée sur cette page, avec une date actualisée.
+        </p>
+      </section>
+
+      <section class="block">
+        <h2><span class="num">10</span> Contact</h2>
+        <p>
+          Pour toute question relative à cette politique de confidentialité :
+          <a href="mailto:ayoub-mhb10@hotmail.fr">ayoub-mhb10@hotmail.fr</a>
+        </p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- ══════════════ ENGLISH ══════════════ -->
+  <div id="en" hidden>
+
+    <div class="hero">
+      <div class="hero-icon">🔒</div>
+      <p class="hero-text">
+        CoinCache does not collect, transmit or store any personal data on a
+        server. Everything stays on your phone, without exception.
       </p>
     </div>
-  </section>
 
-  <!-- ============ ENGLISH ============ -->
-  <section id="en" hidden>
-    <div class="highlight">
-      CoinCache does not collect, transmit or store any personal data on a server.
-      All your information stays exclusively on your device.
+    <div class="facts">
+      <div class="fact">
+        <span class="fact-emoji">🚫</span>
+        <div class="fact-label">No account</div>
+        <div class="fact-sub">No sign-up</div>
+      </div>
+      <div class="fact">
+        <span class="fact-emoji">📡</span>
+        <div class="fact-label">No server</div>
+        <div class="fact-sub">No connection</div>
+      </div>
+      <div class="fact">
+        <span class="fact-emoji">📊</span>
+        <div class="fact-label">No tracking</div>
+        <div class="fact-sub">No ads, no analytics</div>
+      </div>
+      <div class="fact">
+        <span class="fact-emoji">📱</span>
+        <div class="fact-label">100% local</div>
+        <div class="fact-sub">On your device</div>
+      </div>
     </div>
 
     <div class="card">
-      <h2>1. No data collection</h2>
-      <p>
-        CoinCache is a fully local budgeting application. It has no server, creates no online
-        account and makes no network connection to transmit your information.
-      </p>
-      <p>We do not collect, access or share any of the following:</p>
-      <ul>
-        <li>Your transactions, amounts, categories and labels</li>
-        <li>Your balance, savings goals and budgets</li>
-        <li>Your first name, password and profile picture</li>
-        <li>Your preferences (currency, language, theme)</li>
-        <li>Any advertising or tracking identifier</li>
-      </ul>
 
-      <h2>2. Where your data is stored</h2>
-      <p>
-        All your data is saved in the application's private storage, on your device only.
-        This space is protected by the Android system and is not accessible to any other
-        application.
-      </p>
-      <p>
-        Uninstalling CoinCache, or clearing its data from the Android settings, permanently
-        deletes all of this information.
-      </p>
+      <section class="block">
+        <h2><span class="num">1</span> No data collection</h2>
+        <p>
+          CoinCache is a fully local budgeting application. It has no server,
+          creates no online account and makes no network connection to transmit
+          your information.
+        </p>
+        <p>We do not collect, access or share any of the following:</p>
+        <ul>
+          <li>Your transactions, amounts, categories and labels</li>
+          <li>Your balance, savings goals and budgets</li>
+          <li>Your first name, lock code and profile picture</li>
+          <li>Your preferences: currency, language, theme</li>
+          <li>Any advertising or tracking identifier</li>
+        </ul>
+      </section>
 
-      <h2>3. Security</h2>
-      <p>
-        The password you set is used solely to protect access to the application on your
-        device. It is never transmitted and is not stored in plain text: only a cryptographic
-        hash (SHA-256 with salt) is kept locally.
-      </p>
-      <p>
-        If you enable fingerprint sign-in, authentication is handled by the Android system.
-        CoinCache neither receives nor stores any biometric data.
-      </p>
+      <section class="block">
+        <h2><span class="num">2</span> Optional information</h2>
+        <p>
+          The app can be used without providing any personal information at all.
+          The first name and the lock code are offered during the initial setup,
+          but both remain entirely optional.
+        </p>
+        <p>
+          When provided, these are used solely for the local operation of the app:
+          personalizing the display and protecting access on the device. They can
+          be changed or removed at any time from the settings.
+        </p>
+      </section>
 
-      <h2>4. Permissions requested</h2>
-      <ul>
-        <li><strong>Notifications</strong> — to send you a daily reminder and alert you when a
-        budget is exceeded. These notifications are generated locally by your device.</li>
-        <li><strong>Biometrics</strong> — to allow fingerprint unlocking.</li>
-        <li><strong>Photo access</strong> — only when you choose a profile picture. The selected
-        image is copied into the application's private storage.</li>
-        <li><strong>File access</strong> — only when you save a backup or an export, to the
-        folder you select.</li>
-      </ul>
+      <section class="block">
+        <h2><span class="num">3</span> Where your data is stored</h2>
+        <p>
+          All your data is saved in the application's private storage, on your
+          device only. This space is protected by the Android system and is not
+          accessible to any other application.
+        </p>
+        <div class="note">
+          Uninstalling CoinCache, or clearing its data from the Android settings,
+          permanently deletes all of this information. Remember to create a backup
+          before switching devices.
+        </div>
+      </section>
 
-      <h2>5. Backups and exports</h2>
-      <p>
-        CoinCache lets you export your data in JSON or CSV format. These files are created at
-        your request and saved to the location of your choice on your device. They belong
-        entirely to you; storing and sharing them is your sole responsibility.
-      </p>
+      <section class="block">
+        <h2><span class="num">4</span> Security</h2>
+        <p>
+          The lock code you may set is used solely to protect access to the app on
+          your device. It is never transmitted and is not stored in plain text:
+          only a cryptographic hash (SHA-256 with salt) is kept locally.
+        </p>
+        <p>
+          Fingerprint unlocking is disabled by default. If you choose to enable it,
+          authentication is handled by the Android system: CoinCache neither
+          receives nor stores any biometric data.
+        </p>
+      </section>
 
-      <h2>6. Third-party services</h2>
-      <p>
-        CoinCache includes no analytics, no advertising and no tracking tools. No third-party
-        library within the application transmits data externally.
-      </p>
+      <section class="block">
+        <h2><span class="num">5</span> Permissions requested</h2>
+        <p>
+          Each permission is requested at the exact moment it becomes useful, never
+          at app startup.
+        </p>
+        <ul>
+          <li><strong>Notifications</strong> — requested when you enable the daily reminder or create a budget alert. These notifications are generated locally by your device.</li>
+          <li><strong>Biometrics</strong> — requested only if you enable fingerprint unlocking.</li>
+          <li><strong>Photos</strong> — selecting a profile picture goes through the Android system picker. The app never accesses the rest of your gallery.</li>
+          <li><strong>Files</strong> — only when you save a backup or an export, to the folder you select yourself.</li>
+        </ul>
+      </section>
 
-      <h2>7. Children</h2>
-      <p>
-        CoinCache is not specifically directed at children and collects no data whatsoever,
-        regardless of the user's age.
-      </p>
+      <section class="block">
+        <h2><span class="num">6</span> Backups and exports</h2>
+        <p>
+          CoinCache lets you export your data in JSON or CSV format. These files are
+          created at your request and saved to the location of your choice on your
+          device. They belong entirely to you; storing and sharing them is your sole
+          responsibility.
+        </p>
+      </section>
 
-      <h2>8. Changes</h2>
-      <p>
-        This policy may be updated as the application evolves. Any change will be published on
-        this page along with a revised update date.
-      </p>
+      <section class="block">
+        <h2><span class="num">7</span> Third-party services</h2>
+        <p>
+          CoinCache includes no analytics, no advertising and no tracking tools. No
+          third-party library within the application transmits data externally.
+        </p>
+      </section>
 
-      <h2>9. Contact</h2>
-      <p>
-        For any question regarding this privacy policy:
-        <a href="mailto:ayoub-mhb10@hotmail.fr">ayoub-mhb10@hotmail.fr</a>
-      </p>
+      <section class="block">
+        <h2><span class="num">8</span> Children</h2>
+        <p>
+          CoinCache is intended for adults and collects no data whatsoever,
+          regardless of the user's age.
+        </p>
+      </section>
+
+      <section class="block">
+        <h2><span class="num">9</span> Changes</h2>
+        <p>
+          This policy may be updated as the application evolves. Any change will be
+          published on this page along with a revised date.
+        </p>
+      </section>
+
+      <section class="block">
+        <h2><span class="num">10</span> Contact</h2>
+        <p>
+          For any question regarding this privacy policy:
+          <a href="mailto:ayoub-mhb10@hotmail.fr">ayoub-mhb10@hotmail.fr</a>
+        </p>
+      </section>
+
     </div>
-  </section>
+  </div>
 
-  <footer>CoinCache — Ayoub Mouhib</footer>
+  <footer>
+    <div class="footer-name">CoinCache</div>
+    Ayoub Mouhib
+  </footer>
 </div>
 
 <script>
@@ -272,11 +580,13 @@
     document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
     document.getElementById('btn-en').classList.toggle('active', lang === 'en');
     document.documentElement.lang = lang;
-    document.getElementById('sub').textContent = lang === 'fr'
-      ? 'Politique de confidentialité — dernière mise à jour : août 2026'
-      : 'Privacy Policy — last updated: August 2026';
+    document.getElementById('tagline').textContent = lang === 'fr'
+      ? 'Politique de confidentialité · Mise à jour : août 2026'
+      : 'Privacy Policy · Updated: August 2026';
+    document.title = lang === 'fr'
+      ? 'Politique de confidentialité — CoinCache'
+      : 'Privacy Policy — CoinCache';
   }
-  // Langue initiale selon le navigateur
   if ((navigator.language || '').slice(0, 2) !== 'fr') setLang('en');
 </script>
 </body>
