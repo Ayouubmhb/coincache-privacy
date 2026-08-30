@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Politique de confidentialité — CoinCache</title>
 <meta name="description" content="CoinCache ne collecte aucune donnée. Tout reste sur votre téléphone.">
+<link rel="icon" href="./coincache_logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
+  /* ---------- Thème clair ---------- */
+  :root,
+  [data-theme="light"] {
     --bg-top: #F7EBDD;
     --bg-bottom: #F2F0EE;
     --surface: #FFFFFF;
@@ -24,26 +27,27 @@
     --green: #2E6B3E;
     --green-bg: #E8F6EC;
     --green-card: #A9D3A0;
+    --shadow: 0 8px 24px rgba(232, 196, 0, 0.28);
     --radius: 22px;
   }
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg-top: #1E1A16;
-      --bg-bottom: #161310;
-      --surface: #28231F;
-      --surface-alt: #332D28;
-      --border: #443C35;
-      --text: #F2EFEA;
-      --text-soft: #C9C2B8;
-      --grey: #9A948C;
-      --yellow: #F2CF1D;
-      --yellow-dark: #D9BA00;
-      --yellow-pale: #332B18;
-      --green: #A9D3A0;
-      --green-bg: #1F3324;
-      --green-card: #3D5C3A;
-    }
+  /* ---------- Thème sombre ---------- */
+  [data-theme="dark"] {
+    --bg-top: #1E1A16;
+    --bg-bottom: #161310;
+    --surface: #28231F;
+    --surface-alt: #332D28;
+    --border: #443C35;
+    --text: #F2EFEA;
+    --text-soft: #C9C2B8;
+    --grey: #9A948C;
+    --yellow: #F2CF1D;
+    --yellow-dark: #D9BA00;
+    --yellow-pale: #332B18;
+    --green: #A9D3A0;
+    --green-bg: #1F3324;
+    --green-card: #3D5C3A;
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -54,24 +58,43 @@
     color: var(--text);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     line-height: 1.7;
-    padding: 40px 20px 80px;
+    padding: 22px 20px 80px;
     -webkit-font-smoothing: antialiased;
+    transition: background .25s ease, color .25s ease;
   }
 
   .wrap { max-width: 780px; margin: 0 auto; }
 
+  /* ---------- Barre supérieure : bascule de thème ---------- */
+  .topbar { display: flex; justify-content: flex-end; margin-bottom: 8px; }
+
+  .theme-toggle {
+    width: 44px; height: 44px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 19px;
+    cursor: pointer;
+    transition: transform .18s ease, background .25s ease;
+  }
+  .theme-toggle:hover { transform: scale(1.07); }
+  .theme-toggle:active { transform: scale(0.94); }
+
   /* ---------- En-tête ---------- */
-  header { text-align: center; margin-bottom: 34px; }
+  header { text-align: center; margin-bottom: 30px; }
 
   .logo-mark {
-    width: 76px; height: 76px;
-    margin: 0 auto 18px;
-    border-radius: 24px;
-    background: var(--yellow);
+    width: 96px; height: 96px;
+    margin: 0 auto 16px;
+    border-radius: 26px;
+    background: var(--surface);
+    border: 1px solid var(--border);
     display: flex; align-items: center; justify-content: center;
-    font-size: 38px;
-    box-shadow: 0 8px 24px rgba(232, 196, 0, 0.28);
+    overflow: hidden;
+    box-shadow: var(--shadow);
   }
+  .logo-mark img { width: 100%; height: 100%; object-fit: contain; }
 
   h1 {
     font-family: 'Antonio', sans-serif;
@@ -81,11 +104,7 @@
     line-height: 1.05;
   }
 
-  .tagline {
-    color: var(--grey);
-    font-size: 14px;
-    margin-top: 6px;
-  }
+  .tagline { color: var(--grey); font-size: 14px; margin-top: 6px; }
 
   /* ---------- Sélecteur de langue ---------- */
   .lang-switch {
@@ -95,7 +114,7 @@
     border-radius: 999px;
     padding: 5px;
     width: fit-content;
-    margin: 26px auto 34px;
+    margin: 0 auto 32px;
   }
   .lang-switch button {
     border: none;
@@ -110,10 +129,7 @@
     transition: background .18s ease, color .18s ease;
   }
   .lang-switch button:hover { color: var(--text); }
-  .lang-switch button.active {
-    background: var(--yellow);
-    color: #111111;
-  }
+  .lang-switch button.active { background: var(--yellow); color: #111111; }
 
   /* ---------- Bandeau clé ---------- */
   .hero {
@@ -236,7 +252,7 @@
   [hidden] { display: none !important; }
 
   @media (max-width: 560px) {
-    body { padding: 28px 14px 60px; }
+    body { padding: 18px 14px 60px; }
     .card { padding: 4px 20px 22px; }
     .hero { padding: 20px; flex-direction: column; gap: 14px; }
   }
@@ -245,8 +261,14 @@
 <body>
 <div class="wrap">
 
+  <div class="topbar">
+    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Changer de thème">🌙</button>
+  </div>
+
   <header>
-    <div class="logo-mark">🐷</div>
+    <div class="logo-mark">
+      <img src="./coincache_logo.png" alt="CoinCache">
+    </div>
     <h1>CoinCache</h1>
     <p class="tagline" id="tagline">Politique de confidentialité · Mise à jour : août 2026</p>
   </header>
@@ -560,7 +582,7 @@
         <h2><span class="num">10</span> Contact</h2>
         <p>
           For any question regarding this privacy policy:
-          <a href="mailto:ayoubmhb13@gmail.com">ayoubmhb13@gmail.com</a>
+          <a href="mailto:ayoub-mhb10@hotmail.fr">ayoub-mhb10@hotmail.fr</a>
         </p>
       </section>
 
@@ -574,6 +596,29 @@
 </div>
 
 <script>
+  /* ---------- Thème : clair / sombre, mémorisé ---------- */
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.getElementById('theme-toggle').textContent =
+      theme === 'dark' ? '☀️' : '🌙';
+  }
+
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    try { localStorage.setItem('cc-theme', next); } catch (e) {}
+  }
+
+  (function initTheme() {
+    let saved = null;
+    try { saved = localStorage.getItem('cc-theme'); } catch (e) {}
+    const system = window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    applyTheme(saved || system);
+  })();
+
+  /* ---------- Langue ---------- */
   function setLang(lang) {
     document.getElementById('fr').hidden = lang !== 'fr';
     document.getElementById('en').hidden = lang !== 'en';
@@ -587,6 +632,7 @@
       ? 'Politique de confidentialité — CoinCache'
       : 'Privacy Policy — CoinCache';
   }
+
   if ((navigator.language || '').slice(0, 2) !== 'fr') setLang('en');
 </script>
 </body>
